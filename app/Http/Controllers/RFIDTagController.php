@@ -21,10 +21,10 @@ class RFIDTagController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tag_id' => 'required|string',
+            'UIDresult' => 'required|string',
         ]);
 
-        RFIDTagReadEvent::dispatch($request->tag_id);
+        RFIDTagReadEvent::dispatch($request->input('UIDresult'));
 
         return response()->json([
             'message' => 'RFID tag read event dispatched.',
